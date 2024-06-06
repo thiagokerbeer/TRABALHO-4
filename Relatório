@@ -1,0 +1,46 @@
+Relatório de Desenvolvimento: Integração de Sistemas com Servlets, JPA e JEE
+
+Introdução:
+Este relatório detalha o desenvolvimento de um sistema cadastral web utilizando tecnologias fundamentais no contexto de desenvolvimento Java Enterprise Edition (JEE). O projeto foi conduzido como parte de uma atividade prática no contexto acadêmico, visando integrar sistemas por meio de Servlets, JPA (Java Persistence API) e JEE (Java Enterprise Edition).
+
+Objetivos:
+
+Implementar persistência com base em JPA.
+Desenvolver regras de negócio na plataforma JEE, através de EJBs (Enterprise JavaBeans).
+Construir um sistema cadastral web utilizando Servlets e JSPs (JavaServer Pages).
+Utilizar a biblioteca Bootstrap para melhoria do design.
+Passo a Passo:
+
+Configuração da Conexão com o SQL Server:
+
+Configuramos a conexão com o SQL Server via NetBeans, utilizando o pool de conexões no GlassFish Server 6.2.1.
+Criação do Projeto Java Enterprise:
+
+Criamos um projeto do tipo Java Enterprise no NetBeans, denominado "CadastroEE", com servidor GlassFish e plataforma Jakarta JEE 8.
+Definição das Camadas de Persistência e Controle:
+
+Criamos as entidades JPA a partir do banco de dados existente, utilizando a opção "New Entity Classes from Database".
+Adicionamos os componentes EJB ao projeto para fornecer acesso aos dados e lógica de negócio.
+Ajustes para Uso do Jakarta EE:
+
+Adicionamos a biblioteca Jakarta EE 8 API ao projeto e realizamos ajustes nas importações de pacotes javax para jakarta.
+Modificamos o tipo do atributo "precoVenda" na entidade Produto de BigDecimal para Float.
+Atualizamos o arquivo persistence.xml conforme as especificações do Jakarta EE.
+Desenvolvimento do Servlet de Teste:
+
+Criamos um Servlet chamado ServletProduto para exibir a lista de produtos.
+No Servlet, utilizamos a injeção de dependência para acessar as funcionalidades de persistência.
+Implementação do Servlet para Formulário de Cadastro de Produto:
+
+Criamos o ServletProdutoFC como um Front Controller para lidar com diferentes ações: listar, incluir, alterar, excluir, formIncluir e formAlterar.
+Implementamos a lógica para cada ação, incluindo manipulação de formulários e interação com a camada de persistência.
+Criação das Páginas JSP:
+
+Desenvolvemos a página ProdutoLista.jsp para exibir a lista de produtos e fornecer links para adição, edição e exclusão de produtos.
+Criamos a página ProdutoDados.jsp para exibir um formulário de cadastro e edição de produtos.
+Testes:
+
+Testamos as funcionalidades do sistema através do acesso aos Servlets via navegador web.
+Verificamos a listagem de produtos, adição, edição e exclusão de itens do sistema.
+Conclusão:
+Este projeto proporcionou uma oportunidade valiosa para aplicar conceitos fundamentais de desenvolvimento Java Enterprise, incluindo persistência de dados, lógica de negócios e apresentação web. A integração de sistemas utilizando Servlets, JPA e JEE demonstrou a capacidade de criar aplicativos robustos e escaláveis na plataforma Java. Este relatório reflete o processo detalhado de desenvolvimento e os resultados alcançados durante a atividade prática.
