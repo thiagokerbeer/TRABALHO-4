@@ -1,0 +1,121 @@
+java
+Copiar código
+// Produto.java
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Produto implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private Float precoVenda;
+    
+    // getters e setters
+}
+java
+Copiar código
+// ProdutoFacade.java
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Stateless
+public class ProdutoFacade extends AbstractFacade<Produto> implements ProdutoFacadeLocal {
+    @PersistenceContext(unitName = "CadastroEE-ejbPU")
+    private EntityManager em;
+    
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+    
+    public ProdutoFacade() {
+        super(Produto.class);
+    }
+}
+java
+Copiar código
+// ServletProduto.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "ServletProduto", urlPatterns = {"/ServletProduto"})
+public class ServletProduto extends HttpServlet {
+    @EJB
+    private ProdutoFacadeLocal produtoFacade;
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            // Código do processRequest
+        }
+    }
+
+    // Métodos doGet e doPost aqui, chamando processRequest conforme necessário
+}
+java
+Copiar código
+// ServletProdutoFC.java
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "ServletProdutoFC", urlPatterns = {"/ServletProdutoFC"})
+public class ServletProdutoFC extends HttpServlet {
+    @EJB
+    private ProdutoFacadeLocal produtoFacade;
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Código do processRequest
+    }
+
+    // Métodos doGet e doPost aqui, chamando processRequest conforme necessário
+}
+jsp
+Copiar código
+<!-- ProdutoLista.jsp -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <!-- Código da página ProdutoLista.jsp -->
+</body>
+</html>
+jsp
+Copiar código
+<!-- ProdutoDados.jsp -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Produto</title>
+</head>
+<body>
+    <!-- Código da página ProdutoDados.jsp -->
+</body>
+</html>
